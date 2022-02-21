@@ -20,17 +20,11 @@
 
 /*********************************************************************
 
- 1. NAME
-    string_manipulation_program.c
+  1. NAME
+  string_manipulation_program.c
 
- 2. DESCRIPTION
-    Manipulates a string of characters. Prints a menu and the user may select the actions.
-
- 3. VERSIONS
-       Original:
-         18.3.2021 / Ossi Moisio
-
-       Version history:
+  2. DESCRIPTION
+  Program which lets you manipulate a string of characters. Prints a menu and user may select the actions.
 
 **********************************************************************/
 
@@ -72,71 +66,71 @@ void write_file(char s[]);
 
 int main()
 {
-    char string[STRING_LENGTH] = "Hello World!!";
-    char cmd;
-    int count;
+  char string[STRING_LENGTH] = "Hello World!!";
+  char cmd;
+  int count;
 
-    display_menu();
+  display_menu();
 
-    while (cmd != 'X')
+  while (cmd != 'X')
+  {
+    cmd = ask_command();
+
+    if (cmd == 'A')
     {
-        cmd = ask_command();
-
-        if (cmd == 'A')
-        {
-            count = count_vowels(string);
-            printf("String has %d vowels\n", count);
-            printf("\n");
-        }
-
-        else if (cmd == 'B')
-        {
-            count = count_consonants(string);
-            printf("String has %d consonants\n", count);
-            printf("\n");
-        }
-
-        else if (cmd == 'C')
-        {
-            to_upper(string);
-            printf("\n");
-        }
-
-        else if (cmd == 'D')
-        {
-            to_lower(string);
-            printf("\n");
-        }
-
-        else if (cmd == 'E')
-        {
-            print_string(string);
-            printf("\n");
-        }
-
-        else if (cmd == 'F')
-        {
-            read_string(string);
-            printf("\n");
-        }
-
-        else if (cmd == 'G')
-        {
-            read_file(string);
-            printf("\n");
-        }
-
-        else if (cmd == 'H')
-        {
-            write_file(string);
-            printf("\n");
-        }
-
-        else if (cmd == 'M')
-        {
-            display_menu();
-        }
+      count = count_vowels(string);
+      printf("String has %d vowels\n", count);
+      printf("\n");
     }
+
+    else if (cmd == 'B')
+    {
+      count = count_consonants(string);
+      printf("String has %d consonants\n", count);
+      printf("\n");
+    }
+
+    else if (cmd == 'C')
+    {
+      to_upper(string);
+      printf("\n");
+    }
+
+    else if (cmd == 'D')
+    {
+      to_lower(string);
+      printf("\n");
+    }
+
+    else if (cmd == 'E')
+    {
+      print_string(string);
+      printf("\n");
+    }
+
+    else if (cmd == 'F')
+    {
+      read_string(string);
+      printf("\n");
+    }
+
+    else if (cmd == 'G')
+    {
+      read_file(string);
+      printf("\n");
+    }
+
+    else if (cmd == 'H')
+    {
+      write_file(string);
+      printf("\n");
+    }
+
+    else if (cmd == 'M')
+    {
+      display_menu();
+    }
+  }
 } /* end of main */
 
 /*********************************************************************
@@ -144,223 +138,223 @@ int main()
  **********************************************************************/
 
 /*********************************************************************
-    F U N C T I O N    D E S C R I P T I O N
+  F U N C T I O N    D E S C R I P T I O N
 ---------------------------------------------------------------------
- NAME: display_menu
- DESCRIPTION: Prints a menu of the actions.
-    Input:
-    Output:
-    Used global variables:
- REMARKS when using this function:
+  NAME: display_menu
+  DESCRIPTION: Prints a menu of the actions.
+  Input:
+  Output:
+  Used global variables:
+  REMARKS when using this function:
 *********************************************************************/
 
 void display_menu(void)
 {
-    printf("A) Count the number of vowels in the string\nB) Count the number of consonants in the string\nC) Convert the string to uppercase\nD) Convert the string to  lowercase\nE) Display the current string\nF) Enter another string\nG) Read string from file\nH) Write string to file\n\nM) Display this menu\nX) Exit program\n\n");
+  printf("A) Count the number of vowels in the string\nB) Count the number of consonants in the string\nC) Convert the string to uppercase\nD) Convert the string to lowercase\nE) Display the current string\nF) Enter another string\nG) Read string from file\nH) Write string to file\n\nM) Display this menu\nX) Exit program\n\n");
 }
 
 /*********************************************************************
-    F U N C T I O N    D E S C R I P T I O N
+  F U N C T I O N    D E S C R I P T I O N
 ---------------------------------------------------------------------
- NAME: ask_command
- DESCRIPTION: Asks a command from the user.
-    Input:  Character
-    Output: Character in uppercase
-    Used global variables:
- REMARKS when using this function: Changes lowercase into uppercase, and prints error if command is not in correct range.
+  NAME: ask_command
+  DESCRIPTION: Asks a command from the user.
+  Input:  Character
+  Output: Character in uppercase
+  Used global variables:
+  REMARKS when using this function: Changes lowercase into uppercase, and prints error if command is not in correct range.
 *********************************************************************/
 
 char ask_command(void)
 {
-    char cmd[STRING_LENGTH];
-    printf("Enter command: ");
-    fgets(cmd, STRING_LENGTH, stdin);
+  char cmd[STRING_LENGTH];
+  printf("Enter command: ");
+  fgets(cmd, STRING_LENGTH, stdin);
 
-    if (cmd[0] >= 'a' && cmd[0] <= 'z')
-    {
-        cmd[0] = cmd[0] - 32;
-    }
+  if (cmd[0] >= 'a' && cmd[0] <= 'z')
+  {
+    cmd[0] = cmd[0] - 32;
+  }
 
-    if (cmd[0] >= 'A' && cmd[0] <= 'H' || cmd[0] == 'M' || cmd[0] == 'X')
-    {
-        return cmd[0];
-    }
+  if (cmd[0] >= 'A' && cmd[0] <= 'H' || cmd[0] == 'M' || cmd[0] == 'X')
+  {
+    return cmd[0];
+  }
 
-    else
-    {
-        printf("Invalid command\n\n");
-    }
+  else
+  {
+    printf("Invalid command\n\n");
+  }
 }
 
 /*********************************************************************
-    F U N C T I O N    D E S C R I P T I O N
+  F U N C T I O N    D E S C R I P T I O N
 ---------------------------------------------------------------------
- NAME: count_vowels
- DESCRIPTION: Counts vowels in the string.
-    Input:  String
-    Output: Number of vowels in string
+  NAME: count_vowels
+  DESCRIPTION: Counts vowels in the string.
+  Input: String
+  Output: Number of vowels in string
   Used global variables:
- REMARKS when using this function:
+  REMARKS when using this function:
 *********************************************************************/
 
 int count_vowels(char s[])
 {
-    int count = 0, i;
-    for (i = 0; s[i] != '\0'; i++)
+  int count = 0, i;
+  for (i = 0; s[i] != '\0'; i++)
+  {
+    if (s[i] == 'a' || s[i] == 'A' || s[i] == 'u' || s[i] == 'U' || s[i] == 'e' || s[i] == 'E' || s[i] == 'i' || s[i] == 'I' || s[i] == 'o' || s[i] == 'O')
     {
-        if (s[i] == 'a' || s[i] == 'A' || s[i] == 'u' || s[i] == 'U' || s[i] == 'e' || s[i] == 'E' || s[i] == 'i' || s[i] == 'I' || s[i] == 'o' || s[i] == 'O')
-        {
-            count++;
-        }
+      count++;
     }
-    return count;
+  }
+  return count;
 }
 
 /*********************************************************************
-    F U N C T I O N    D E S C R I P T I O N
+  F U N C T I O N    D E S C R I P T I O N
 ---------------------------------------------------------------------
- NAME: count_consonants
- DESCRIPTION: Counts consonants in the string
-    Input:  String
-    Output: Number of consonants in string
+  NAME: count_consonants
+  DESCRIPTION: Counts consonants in the string
+  Input:  String
+  Output: Number of consonants in string
   Used global variables:
- REMARKS when using this function:
+  REMARKS when using this function:
 *********************************************************************/
 
 int count_consonants(char s[])
 {
-    int count = 0, i;
-    for (i = 0; s[i] != '\0'; i++)
+  int count = 0, i;
+  for (i = 0; s[i] != '\0'; i++)
+  {
+    if (s[i] == 'a' || s[i] == 'A' || s[i] == 'u' || s[i] == 'U' || s[i] == 'e' || s[i] == 'E' || s[i] == 'i' || s[i] == 'I' || s[i] == 'o' || s[i] == 'O')
     {
-        if (s[i] == 'a' || s[i] == 'A' || s[i] == 'u' || s[i] == 'U' || s[i] == 'e' || s[i] == 'E' || s[i] == 'i' || s[i] == 'I' || s[i] == 'o' || s[i] == 'O')
-        {
-        }
-        else if (s[i] >= 'a' && s[i] <= 'z' || s[i] >= 'A' && s[i] <= 'Z')
-        {
-            count++;
-        }
     }
-    return count;
+    else if (s[i] >= 'a' && s[i] <= 'z' || s[i] >= 'A' && s[i] <= 'Z')
+    {
+      count++;
+    }
+  }
+  return count;
 }
 
 /*********************************************************************
-    F U N C T I O N    D E S C R I P T I O N
+  F U N C T I O N    D E S C R I P T I O N
 ---------------------------------------------------------------------
- NAME: to_upper
- DESCRIPTION: Converts the string to uppercase
-    Input:  String
-    Output:
+  NAME: to_upper
+  DESCRIPTION: Converts the string to uppercase
+  Input:  String
+  Output:
   Used global variables:
- REMARKS when using this function:
+  REMARKS when using this function:
 *********************************************************************/
 
 void to_upper(char s[])
 {
-    for (int i = 0; s[i] != '\0'; i++)
+  for (int i = 0; s[i] != '\0'; i++)
+  {
+    if (s[i] >= 'a' && s[i] <= 'z')
     {
-        if (s[i] >= 'a' && s[i] <= 'z')
-        {
-            s[i] = s[i] - 32;
-        }
+      s[i] = s[i] - 32;
     }
+  }
 }
 
 /*********************************************************************
-    F U N C T I O N    D E S C R I P T I O N
+  F U N C T I O N    D E S C R I P T I O N
 ---------------------------------------------------------------------
- NAME: to_lower
- DESCRIPTION: Converts the string to lowercase
-    Input:  String
-    Output:
+  NAME: to_lower
+  DESCRIPTION: Converts the string to lowercase
+  Input:  String
+  Output:
   Used global variables:
- REMARKS when using this function:
+  REMARKS when using this function:
 *********************************************************************/
 
 void to_lower(char s[])
 {
-    for (int i = 0; s[i] != '\0'; i++)
+  for (int i = 0; s[i] != '\0'; i++)
+  {
+    if (s[i] >= 'A' && s[i] <= 'Z')
     {
-        if (s[i] >= 'A' && s[i] <= 'Z')
-        {
-            s[i] = s[i] + 32;
-        }
+      s[i] = s[i] + 32;
     }
+  }
 }
 
 /*********************************************************************
-    F U N C T I O N    D E S C R I P T I O N
+  F U N C T I O N    D E S C R I P T I O N
 ---------------------------------------------------------------------
- NAME: print_string
- DESCRIPTION: Display the current string
-    Input:  String
-    Output:
+  NAME: print_string
+  DESCRIPTION: Display the current string
+  Input:  String
+  Output:
   Used global variables:
- REMARKS when using this function:
+  REMARKS when using this function:
 *********************************************************************/
 
 void print_string(char s[])
 {
-    printf("%s\n", s);
+  printf("%s\n", s);
 }
 
 /*********************************************************************
-    F U N C T I O N    D E S C R I P T I O N
+  F U N C T I O N    D E S C R I P T I O N
 ---------------------------------------------------------------------
- NAME: read_string
- DESCRIPTION: Enter another string
-    Input:  String
-    Output:
+  NAME: read_string
+  DESCRIPTION: Enter another string
+  Input:  String
+  Output:
   Used global variables:
- REMARKS when using this function: Removes newline from the end of the string.
+  REMARKS when using this function: Removes newline from the end of the string.
 *********************************************************************/
 
 void read_string(char s[])
 {
-    printf("Give string: ");
-    fgets(s, STRING_LENGTH, stdin);
-    for (int i = 0; s[i] != '\0'; i++)
+  printf("Give string: ");
+  fgets(s, STRING_LENGTH, stdin);
+  for (int i = 0; s[i] != '\0'; i++)
+  {
+    if (s[i] == '\n')
     {
-        if (s[i] == '\n')
-        {
-            s[i] = '\0';
-        }
+      s[i] = '\0';
     }
+  }
 }
 
 /*********************************************************************
-    F U N C T I O N    D E S C R I P T I O N
+  F U N C T I O N    D E S C R I P T I O N
 ---------------------------------------------------------------------
- NAME: read_file
- DESCRIPTION: Read string from file
-    Input:  String
+  NAME: read_file
+  DESCRIPTION: Read string from file
+    Input: String
     Output:
   Used global variables:
- REMARKS when using this function:
+  REMARKS when using this function:
 *********************************************************************/
 
 void read_file(char s[])
 {
-    FILE *fPointer;
-    fPointer = fopen("string.txt", "r");
-    fscanf(fPointer, "%[^\n]", s);
-    fclose(fPointer);
+  FILE *fPointer;
+  fPointer = fopen("string.txt", "r");
+  fscanf(fPointer, "%[^\n]", s);
+  fclose(fPointer);
 }
 
 /*********************************************************************
-    F U N C T I O N    D E S C R I P T I O N
+  F U N C T I O N    D E S C R I P T I O N
 ---------------------------------------------------------------------
- NAME: write_file
- DESCRIPTION: Write string to file
-    Input:  String
-    Output:
+  NAME: write_file
+  DESCRIPTION: Write string to file
+  Input: String
+  Output:
   Used global variables:
- REMARKS when using this function:
+  REMARKS when using this function:
 *********************************************************************/
 
 void write_file(char s[])
 {
-    FILE *fPointer;
-    fPointer = fopen("string.txt", "w");
-    fprintf(fPointer, "%s", s);
-    fclose(fPointer);
+  FILE *fPointer;
+  fPointer = fopen("string.txt", "w");
+  fprintf(fPointer, "%s", s);
+  fclose(fPointer);
 }
