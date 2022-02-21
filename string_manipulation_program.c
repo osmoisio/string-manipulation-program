@@ -64,71 +64,60 @@ void write_file(char s[]);
  *    MAIN PROGRAM                                                      *
  **********************************************************************/
 
-int main()
-{
+int main() {
   char string[STRING_LENGTH] = "Hello World!!";
   char cmd;
   int count;
 
   display_menu();
 
-  while (cmd != 'X')
-  {
+  while (cmd != 'X') {
     cmd = ask_command();
 
-    if (cmd == 'A')
-    {
+    if (cmd == 'A') {
       count = count_vowels(string);
       printf("String has %d vowels\n", count);
       printf("\n");
     }
 
-    else if (cmd == 'B')
-    {
+    else if (cmd == 'B') {
       count = count_consonants(string);
       printf("String has %d consonants\n", count);
       printf("\n");
     }
 
-    else if (cmd == 'C')
-    {
+    else if (cmd == 'C') {
       to_upper(string);
       printf("\n");
     }
 
-    else if (cmd == 'D')
-    {
+    else if (cmd == 'D') {
       to_lower(string);
       printf("\n");
     }
 
-    else if (cmd == 'E')
-    {
+    else if (cmd == 'E') {
       print_string(string);
       printf("\n");
     }
 
-    else if (cmd == 'F')
-    {
+    else if (cmd == 'F') {
       read_string(string);
       printf("\n");
     }
 
-    else if (cmd == 'G')
-    {
+    else if (cmd == 'G') {
       read_file(string);
       printf("\n");
     }
 
-    else if (cmd == 'H')
-    {
+    else if (cmd == 'H') {
       write_file(string);
       printf("\n");
     }
 
-    else if (cmd == 'M')
-    {
-      display_menu();
+    else if (cmd == 'M') {
+    display_menu();
     }
   }
 } /* end of main */
@@ -148,8 +137,7 @@ int main()
   REMARKS when using this function:
 *********************************************************************/
 
-void display_menu(void)
-{
+void display_menu(void) {
   printf("A) Count the number of vowels in the string\nB) Count the number of consonants in the string\nC) Convert the string to uppercase\nD) Convert the string to lowercase\nE) Display the current string\nF) Enter another string\nG) Read string from file\nH) Write string to file\n\nM) Display this menu\nX) Exit program\n\n");
 }
 
@@ -164,24 +152,20 @@ void display_menu(void)
   REMARKS when using this function: Changes lowercase into uppercase, and prints error if command is not in correct range.
 *********************************************************************/
 
-char ask_command(void)
-{
+char ask_command(void) {
   char cmd[STRING_LENGTH];
   printf("Enter command: ");
   fgets(cmd, STRING_LENGTH, stdin);
 
-  if (cmd[0] >= 'a' && cmd[0] <= 'z')
-  {
+  if (cmd[0] >= 'a' && cmd[0] <= 'z') {
     cmd[0] = cmd[0] - 32;
   }
 
-  if (cmd[0] >= 'A' && cmd[0] <= 'H' || cmd[0] == 'M' || cmd[0] == 'X')
-  {
+  if (cmd[0] >= 'A' && cmd[0] <= 'H' || cmd[0] == 'M' || cmd[0] == 'X') {
     return cmd[0];
   }
 
-  else
-  {
+  else {
     printf("Invalid command\n\n");
   }
 }
@@ -197,17 +181,14 @@ char ask_command(void)
   REMARKS when using this function:
 *********************************************************************/
 
-int count_vowels(char s[])
-{
+int count_vowels(char s[]) {
   int count = 0, i;
-  for (i = 0; s[i] != '\0'; i++)
-  {
-    if (s[i] == 'a' || s[i] == 'A' || s[i] == 'u' || s[i] == 'U' || s[i] == 'e' || s[i] == 'E' || s[i] == 'i' || s[i] == 'I' || s[i] == 'o' || s[i] == 'O')
-    {
+  for (i = 0; s[i] != '\0'; i++) {
+    if (s[i] == 'a' || s[i] == 'A' || s[i] == 'u' || s[i] == 'U' || s[i] == 'e' || s[i] == 'E' || s[i] == 'i' || s[i] == 'I' || s[i] == 'o' || s[i] == 'O') {
       count++;
     }
   }
-  return count;
+    return count;
 }
 
 /*********************************************************************
@@ -221,16 +202,11 @@ int count_vowels(char s[])
   REMARKS when using this function:
 *********************************************************************/
 
-int count_consonants(char s[])
-{
+int count_consonants(char s[]) {
   int count = 0, i;
-  for (i = 0; s[i] != '\0'; i++)
-  {
-    if (s[i] == 'a' || s[i] == 'A' || s[i] == 'u' || s[i] == 'U' || s[i] == 'e' || s[i] == 'E' || s[i] == 'i' || s[i] == 'I' || s[i] == 'o' || s[i] == 'O')
-    {
-    }
-    else if (s[i] >= 'a' && s[i] <= 'z' || s[i] >= 'A' && s[i] <= 'Z')
-    {
+  for (i = 0; s[i] != '\0'; i++) {
+    if (s[i] == 'a' || s[i] == 'A' || s[i] == 'u' || s[i] == 'U' || s[i] == 'e' || s[i] == 'E' || s[i] == 'i' || s[i] == 'I' || s[i] == 'o' || s[i] == 'O') {
+    } else if (s[i] >= 'a' && s[i] <= 'z' || s[i] >= 'A' && s[i] <= 'Z') {
       count++;
     }
   }
@@ -248,12 +224,9 @@ int count_consonants(char s[])
   REMARKS when using this function:
 *********************************************************************/
 
-void to_upper(char s[])
-{
-  for (int i = 0; s[i] != '\0'; i++)
-  {
-    if (s[i] >= 'a' && s[i] <= 'z')
-    {
+void to_upper(char s[]) {
+  for (int i = 0; s[i] != '\0'; i++) {
+    if (s[i] >= 'a' && s[i] <= 'z') {
       s[i] = s[i] - 32;
     }
   }
@@ -270,12 +243,9 @@ void to_upper(char s[])
   REMARKS when using this function:
 *********************************************************************/
 
-void to_lower(char s[])
-{
-  for (int i = 0; s[i] != '\0'; i++)
-  {
-    if (s[i] >= 'A' && s[i] <= 'Z')
-    {
+void to_lower(char s[]) {
+  for (int i = 0; s[i] != '\0'; i++) {
+    if (s[i] >= 'A' && s[i] <= 'Z') {
       s[i] = s[i] + 32;
     }
   }
@@ -292,8 +262,7 @@ void to_lower(char s[])
   REMARKS when using this function:
 *********************************************************************/
 
-void print_string(char s[])
-{
+void print_string(char s[]) {
   printf("%s\n", s);
 }
 
@@ -308,14 +277,11 @@ void print_string(char s[])
   REMARKS when using this function: Removes newline from the end of the string.
 *********************************************************************/
 
-void read_string(char s[])
-{
+void read_string(char s[]) {
   printf("Give string: ");
   fgets(s, STRING_LENGTH, stdin);
-  for (int i = 0; s[i] != '\0'; i++)
-  {
-    if (s[i] == '\n')
-    {
+  for (int i = 0; s[i] != '\0'; i++) {
+    if (s[i] == '\n') {
       s[i] = '\0';
     }
   }
@@ -332,8 +298,7 @@ void read_string(char s[])
   REMARKS when using this function:
 *********************************************************************/
 
-void read_file(char s[])
-{
+void read_file(char s[]) {
   FILE *fPointer;
   fPointer = fopen("string.txt", "r");
   fscanf(fPointer, "%[^\n]", s);
@@ -351,8 +316,7 @@ void read_file(char s[])
   REMARKS when using this function:
 *********************************************************************/
 
-void write_file(char s[])
-{
+void write_file(char s[]) {
   FILE *fPointer;
   fPointer = fopen("string.txt", "w");
   fprintf(fPointer, "%s", s);
