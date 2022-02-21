@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2021 by Ossi Moisio   *
+ *   Copyright (C) 2022 by Ossi Moisio   *
  *              *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -74,50 +74,53 @@ int main() {
   while (cmd != 'X') {
     cmd = ask_command();
 
-    if (cmd == 'A') {
+    switch (cmd) {
+      
+      case 'A':
       count = count_vowels(string);
       printf("String has %d vowels\n", count);
       printf("\n");
-    }
+      break;
 
-    else if (cmd == 'B') {
+      case 'B':
       count = count_consonants(string);
       printf("String has %d consonants\n", count);
       printf("\n");
-    }
+      break;
 
-    else if (cmd == 'C') {
+      case 'C':
       to_upper(string);
       printf("\n");
-    }
+      break;
 
-    else if (cmd == 'D') {
+      case 'D':
       to_lower(string);
       printf("\n");
-    }
+      break;
 
-    else if (cmd == 'E') {
+      case 'E':
       print_string(string);
       printf("\n");
-    }
+      break;
 
-    else if (cmd == 'F') {
+      case 'F':
       read_string(string);
       printf("\n");
-    }
+      break;
 
-    else if (cmd == 'G') {
+      case 'G':
       read_file(string);
       printf("\n");
-    }
+      break;
 
-    else if (cmd == 'H') {
+      case 'H':
       write_file(string);
       printf("\n");
-    }
+      break;
 
-    else if (cmd == 'M') {
-    display_menu();
+      case 'M':
+      display_menu();
+      break;
     }
   }
 } /* end of main */
